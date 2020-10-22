@@ -13,7 +13,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
               integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
               rel="stylesheet" crossorigin="anonymous"
-              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css" asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css" 
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
               asp-fallback-test-value="absolute"
               asp-suppress-fallback-integrity="true">
     </environment>
@@ -23,8 +24,8 @@
 <body>
 <div>
     <nav class="navbar 
-         navbar-expand-sm 
-         bg-dark navbar-dark">
+         navbar-expand-lg 
+         bg-light navbar-light">
         <a asp-controller="Home" asp-action="Index" class="navbar-brand">
             首页
         </a>
@@ -45,9 +46,7 @@
             </ul>
         </div>
     </nav>
-    <div class="col-md-8">
-        @RenderBody()
-    </div>
+    @RenderBody()
 </div>
 @RenderSection("Scripts", required: false);
 </body>
