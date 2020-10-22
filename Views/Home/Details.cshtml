@@ -1,0 +1,32 @@
+﻿@model blog.ViewModels.HomeDetailsViewModel
+@{
+    ViewBag.Title = "文章详情";
+}
+
+<h3>@Model.PageTile</h3>
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Article.Title</h1>
+            </div>
+            <div class="card-body">
+                <img src="" alt="Alternate Text" class="card-img-top" />
+                <h4>文章ID:@Model.Article.Id</h4>
+                <h4>文章内容:@Model.Article.Content</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary">返回</a>
+                <a href="#" class="btn btn-primary">编辑</a>
+                <a href="#" class="btn btn-danger">删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    标题: @Model.Article.Title
+</div>
+<div>
+    正文: @Model.Article.Content
+</div>

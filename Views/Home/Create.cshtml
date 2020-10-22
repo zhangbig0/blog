@@ -1,0 +1,16 @@
+﻿@model blog.Model.Article;
+@{
+    ViewBag.Title = "创建文章";
+}
+]
+<form action="" asp-controller="Home" asp-action="Create" method="post">
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title"/>
+    </div>
+    <div>
+        <label asp-for="Content"></label>
+        <input asp-for="Content"/>
+    </div>
+    <button type="submit">创建</button>
+</form>
