@@ -4,11 +4,12 @@
     <div class="card-deck">
         @foreach (var article in Model)
         {
+            var photoPath = "~/images/" + (article.PhotoPath);
             <div class="card m-3">
                 <div class="card-header">
                     <h3 class="card-title">@article.Title</h3>
                 </div>
-                <img src="#" alt="Alternate Text" class="card-img-top" />
+                <img src="@photoPath" asp-append-version="true" alt="Alternate Text" class="card-img-top" />
 
                 <div class="card-footer text-center">
                     <a asp-controller="Home" asp-action="Details" asp-route-id="@article.Id" class="btn btn-primary m-1">查看</a>

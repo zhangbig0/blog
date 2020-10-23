@@ -5,14 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="新文件夹1\**" />
-    <Content Remove="新文件夹1\**" />
-    <EmbeddedResource Remove="新文件夹1\**" />
-    <None Remove="新文件夹1\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Views\Article\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>

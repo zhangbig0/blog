@@ -8,7 +8,7 @@ namespace blog.Services
 {
     public interface IArticleRepository
     {
-        Article GetArticle(int id);
+        Article GetArticleById(int id);
 
         // void Save(Model.Article updateArticle);
         IEnumerable<Article> GetAllArticles();

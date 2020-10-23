@@ -1,6 +1,8 @@
-﻿@model blog.ViewModels.HomeDetailsViewModel
+﻿@using System.Threading
+@model blog.ViewModels.HomeDetailsViewModel
 @{
     ViewBag.Title = "文章详情";
+    var photoPath = "~/images/" + (Model.Article.PhotoPath);
 }
 
 <h3>@Model.PageTile</h3>
@@ -11,8 +13,8 @@
             <div class="card-header">
                 <h1>@Model.Article.Title</h1>
             </div>
-            <div class="card-body">
-                <img src="" alt="Alternate Text" class="card-img-top" />
+            <div class="card-body text-center">
+                <img src="@photoPath" asp-append-version="true" alt="Alternate Text" class="card-img-top" />
                 <h4>文章ID:@Model.Article.Id</h4>
                 <h4>文章内容:@Model.Article.Content</h4>
             </div>

@@ -30,7 +30,7 @@ namespace blog
             services.AddControllersWithViews(a => a.EnableEndpointRouting = false);
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("blog")));
-            services.AddSingleton<IArticleRepository, MockArticleRepository>();
+            services.AddTransient<IArticleRepository, SqlArticleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,8 +42,8 @@ namespace blog
             }
             else if(env.IsStaging() || env.IsProduction() || env.IsEnvironment("UAT"))
             {
-                app.UseStatusCodePagesWithReExecute("Error/{0}");
                 app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("Error/{0}");
             }
             app.UseStaticFiles();
 

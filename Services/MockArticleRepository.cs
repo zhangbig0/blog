@@ -19,7 +19,7 @@ namespace blog.Services
             };
         }
 
-        public Article GetArticle(int id)
+        public Article GetArticleById(int id)
         {
             return _articles.FirstOrDefault(x => x.Id == id);
         }

@@ -18,7 +18,7 @@ namespace blog.Services
             _context = context;
         }
 
-        public Article GetArticle(int id)
+        public Article GetArticleById(int id)
         {
             return _context.Articles.Find(id);
         }
