@@ -105,10 +105,12 @@ namespace blog.Controllers
                     var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
                     var filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+
+                    article.PhotoPath = uniqueFileName;
                 }
 
                 Article updateArticle = _articleRepository.Update(article);
-                return RedirectToAction("Details", updateArticle.Id);
+                return RedirectToAction("Index");
             }
 
             return View(model);
