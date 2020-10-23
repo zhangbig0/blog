@@ -44,10 +44,15 @@
                     <a class="nav-link" asp-controller="Home" asp-action="create">创建</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Register" class="nav-link">注册</a>
+                </li>
+            </ul>
         </div>
     </nav>
     @RenderBody()
 </div>
-@RenderSection("Scripts", required: false);
+@await RenderSectionAsync("Scripts", required: false);
 </body>
 </html>
