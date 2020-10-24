@@ -67,7 +67,7 @@ namespace blog.Controllers
                 };
 
                 _articleRepository.Insert(newArticle);
-                return RedirectToAction("Details", new {id = newArticle.Id});
+                return RedirectToAction(nameof(Details), new {id = newArticle.Id});
             }
 
             return View();
@@ -110,7 +110,7 @@ namespace blog.Controllers
                 }
 
                 Article updateArticle = _articleRepository.Update(article);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(model);

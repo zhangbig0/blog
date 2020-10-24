@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace blog.ViewModels
 {
@@ -11,6 +12,7 @@ namespace blog.ViewModels
         [Required]
         [EmailAddress]
         [Display(Name = "邮箱地址")]
+        [Remote(action: "IsEmailInUse", controller: "Account")]
         public string Email { get; set; }
 
         [Required]
