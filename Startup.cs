@@ -29,19 +29,21 @@ namespace blog
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequiredLength = 6;
-                options.Password.RequiredUniqueChars = 3;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-            });
+            
             services.AddControllersWithViews(a => a.EnableEndpointRouting = false);
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("blog")));
             services.AddTransient<IArticleRepository, SqlArticleRepository>();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

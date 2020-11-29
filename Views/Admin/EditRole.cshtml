@@ -34,9 +34,9 @@
             <h3>该角色中的用户</h3>
         </div>
         <div class="card-body">
-            @if (Model.Users.Any())
+            @if (@Model.Users.Any())
             {
-                foreach (var user in Model.Users)
+                foreach (var user in @Model.Users)
                 {
                     <h5 class="card-title">@user</h5>
                 }
@@ -47,8 +47,10 @@
             }
         </div>
         <div class="card-footer">
-            <a href="" class="btn btn-primary" style="width: auto">添加用户</a>
-            <a href="" class="btn btn-primary" style="width: auto">删除用户</a>
+            <a asp-controller="Admin" asp-action="EditUsersInRole" asp-route-roleId="@Model.Id"
+               class="btn btn-primary" style="width: auto">
+                从角色中添加或删除用户
+            </a>
         </div>
     </div>
 </form>
