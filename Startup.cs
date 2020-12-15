@@ -31,11 +31,15 @@ namespace blog
         {
             
             services.AddControllersWithViews(a => a.EnableEndpointRouting = false);
+
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("blog")));
+
             services.AddTransient<IArticleRepository, SqlArticleRepository>();
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequiredLength = 6;
@@ -64,6 +68,8 @@ namespace blog
             app.UseAuthentication();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

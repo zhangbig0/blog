@@ -38,10 +38,15 @@ namespace blog.Controllers
                     UserName = model.Email,
                     Email = model.Email
                 };
+                //将用户数据存储在数据库表中
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
+                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Admin");
+                    }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction(nameof(Index), "Home");
                 }
@@ -97,5 +102,12 @@ namespace blog.Controllers
             var user = await _userManager.FindByEmailAsync(email);
             return user == null ? Json(true) : Json($"邮箱： {email} 已经被使用了。");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+       
     }
 }
