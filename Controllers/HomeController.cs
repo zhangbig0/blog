@@ -31,8 +31,8 @@ namespace blog.Controllers
             var article = _articleRepository.GetArticleById(id);
             if (article == null)
             {
-                Response.StatusCode = 404;
-                return View("ArticleNotFound", id);
+                ViewBag.ErrorMessage = $"文章Id={id}的信息不存在，请重试。";
+                return View("NotFound");
             }
             homeDetailsViewModel.Article = article;
             homeDetailsViewModel.PageTile = "文章详情";

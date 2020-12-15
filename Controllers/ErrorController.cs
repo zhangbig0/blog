@@ -22,7 +22,7 @@ namespace blog.Controllers
                     break;
             }
 
-            return View("Not Found");
+            return View("NotFound");
         }
 
         [Route("Error")]
