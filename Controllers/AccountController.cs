@@ -20,7 +20,7 @@ namespace blog.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
@@ -59,7 +59,7 @@ namespace blog.Controllers
 
             return View(model);
         }
-
+        
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

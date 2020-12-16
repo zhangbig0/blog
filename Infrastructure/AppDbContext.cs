@@ -21,6 +21,14 @@ namespace blog.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
+
+            var foreignKeys = modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys());
+
+            foreach (var foreignKey in foreignKeys)
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
     }
 }

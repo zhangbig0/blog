@@ -60,7 +60,7 @@ namespace blog
             else if (env.IsStaging() || env.IsProduction() || env.IsEnvironment("UAT"))
             {
                 app.UseExceptionHandler("/Error");
-                app.UseStatusCodePagesWithReExecute("Error/{0}");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
 
             app.UseStaticFiles();
@@ -75,7 +75,7 @@ namespace blog
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

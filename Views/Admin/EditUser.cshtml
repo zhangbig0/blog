@@ -1,4 +1,5 @@
-﻿@model EditUserViewModel
+﻿@using blog.Controllers
+@model EditUserViewModel
 @{
     ViewBag.Title = "管理-编辑用户";
 }
@@ -59,7 +60,7 @@
             }
         </div>
         <div class="card-footer">
-            <a href="#" style="width: auto" class="btn btn-primary">管理角色</a>
+            <a asp-controller="Admin" asp-action="ManageUserRoles" asp-route-userId="@Model.Id" style="width: auto" class="btn btn-primary">管理角色</a>
         </div>
     </div>
 
@@ -81,7 +82,7 @@
             }
         </div>
         <div class="card-footer">
-            <a href="#" style="width: auto" class="btn btn-primary">管理申明</a>
+            <a asp-action="ManageUserClaims" asp-controller="Admin" asp-route-userId="@Model.Id" style="width: auto" class="btn btn-primary">管理申明</a>
         </div>
     </div>
 </form>
