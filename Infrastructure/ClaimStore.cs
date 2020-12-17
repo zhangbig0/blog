@@ -10,9 +10,9 @@ namespace blog.Infrastructure
     {
         public static List<Claim> AllClaims = new List<Claim>()
         {
-            new Claim("Create Row", "Create Row"),
-            new Claim("Edit Row", "Edit Row"),
-            new Claim("Delete Row", "Delete Row"),
+            new Claim("Create Role", "Create Role"),
+            new Claim("Edit Role", "Edit Role"),
+            new Claim("Delete Role", "Delete Role"),
             new Claim("EditStudent", "EditStudent")
         };
     }

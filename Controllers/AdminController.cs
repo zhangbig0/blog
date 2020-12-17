@@ -265,13 +265,14 @@ namespace blog.Controllers
                 Email = user.Email,
                 UserName = user.UserName,
                 City = user.City,
-                Claims = userClaims.Select(c => c.Value).ToList(),
+                Claims = userClaims,
                 Roles = userRoles
             };
             return View(model);
         }
 
         [HttpPost]
+        
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {
             var user = await _userManager.FindByIdAsync(model.Id);
@@ -331,6 +332,7 @@ namespace blog.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(string userId)
         {
             ViewBag.userId = userId;
@@ -360,6 +362,7 @@ namespace blog.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(List<RolesInUserViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -444,7 +447,8 @@ namespace blog.Controllers
                 return View(model);
             }
 
-            await _userManager.AddClaimsAsync(user, model.Claims.Where(x => x.IsSelected).Select(y => new Claim(y.ClaimType, y.ClaimType)));
+            result = await _userManager.AddClaimsAsync(user,
+                model.Claims.Select(c => new Claim(c.ClaimType, c.IsSelected ? "true" : "false")));
 
             if (!result.Succeeded)
             {
@@ -456,5 +460,12 @@ namespace blog.Controllers
         }
 
         #endregion
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
     }
 }

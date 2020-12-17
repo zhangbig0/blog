@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace blog.ViewModels
 {
@@ -6,7 +7,7 @@ namespace blog.ViewModels
     {
         public EditUserViewModel()
         {
-            Claims = new List<string>();
+            Claims = new List<Claim>();
             Roles = new List<string>();
         }
 
@@ -14,7 +15,7 @@ namespace blog.ViewModels
         public string UserName { get; set; }
         public string Email { get; set; }
         public string City { get; set; }
-        public List<string> Claims { get; set; }
+        public IList<Claim> Claims { get; set; }
         public IList<string> Roles { get; set; }
     }
 }

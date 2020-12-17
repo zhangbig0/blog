@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using blog.Models
-@inject SignInManager<ApplicationUser> _signInManager
+@using Microsoft.AspNetCore.Authorization
+
+@inject SignInManager<ApplicationUser> SignInManager
+
 
 <!DOCTYPE html>
 
@@ -47,7 +50,7 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="create">创建</a>
                 </li>
-                @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -62,7 +65,7 @@
                 }
             </ul>
             <ul class="navbar-nav ml-auto">
-                @if (_signInManager.IsSignedIn(User))
+                @if (SignInManager.IsSignedIn(User))
                 {
                     <li class="nav-item">
                         <form method="post" asp-controller="Account" asp-action="Logout">

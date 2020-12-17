@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using blog.Model;
 using blog.Services;
 using blog.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -18,7 +19,7 @@ namespace blog.Controllers
     {
         private readonly IArticleRepository _articleRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = _articleRepository.GetAllArticles();

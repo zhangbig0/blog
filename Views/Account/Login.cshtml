@@ -4,29 +4,44 @@
 }
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <h1>本地账户登录</h1>
         <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control"/>
                 <span class="text-danger" asp-validation-for="Email"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control"/>
                 <span class="text-danger" asp-validation-for="Password"></span>
             </div>
-            
+
             <div class="form-group">
                 <div class="checkbox">
                     <label asp-for="RememberMe">
                         <input asp-for="RememberMe"/>
-                        @Html.DisplayNameFor(m =>m.RememberMe)
+                        @Html.DisplayNameFor(m => m.RememberMe)
                     </label>
                 </div>
             </div>
             <button type="submit" class="btn-primary btn">登录</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h1>扩展登录</h1>
+        <form class="mt-3" method="post" asp-action="ExternalLogin" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl">
+            <div>
+                @foreach (var provider in Model.ExternalLogins)
+                {
+                    <button type="submit" class="btn btn-info" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                        @provider.DisplayName
+                    </button>
+                }
+            </div>
         </form>
     </div>
 </div>
